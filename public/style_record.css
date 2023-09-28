@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgba(78, 78, 78, 0.5);
+}
+
+.banner {
+    margin: 0;
+    padding: 50px;
+    background-color: aqua;
+}
+.content-wrap {
+    max-width: 800px;
+    width: 95%;
+    margin: 0 auto;
+}
+
+img {
+    float: left;
+    margin: 10px;
+}
+
+.profile-details {
+    padding-left: 120px;
+}

@@ -1,0 +1,56 @@
+    <% layout('./layouts/template') %>
+
+    <link rel="stylesheet" href="../style_attendance.css">
+    <script src="/script_attendance.js" defer></script>
+
+    <%- include('./partials/navbar')%>
+
+    <div class="content-wrap">
+        <br><h1>---Attendance Form---</h1>
+        <form class="form_register" action="/names" method="POST">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Name:</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter name" name="name">
+                <label for="exampleFormControlInput1" class="form-label">Age:</label>
+                <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Enter age" name="age">
+                <label for="exampleFormControlInput1" class="form-label">Location:</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter location" name="location">
+                <br>
+                <button class="btn btn-primary">SAVE</button>
+                <div class="btns">
+                  <button onclick=clearing() type="button" class="btn btn-secondary">HIDE MEMBERS</button>
+                  <button onclick=memRec() type="button" class="btn btn-success">SHOW MEMBERS</button>
+                 </div>
+            </div>
+        </form>
+
+        <br>
+        <br>
+
+        <table class="table table-hover menu">
+                <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">First</th>
+                  <th scope="col">Last</th>
+                  <th scope="col">Location</th>
+                </tr>
+              </thead>
+
+              <%pangalan.forEach((nem) => { %>
+              <tbody>
+                <tr>
+                  <th scope="row" class="edit-delete">
+                    <form action="/names/<%= nem.id %>?_method=DELETE" method="POST">
+                    <button class="btn btn-danger">🗑️</button>
+                    </form>
+                    <button class="btn btn-info"><a href="/names/<%=nem._id%>/edit">✏️</a></button>
+                  </th>
+                  <td><a href="/names/<%= nem.id %>"><%= nem.name %></a></td>
+                  <td><%= nem.age %></td>
+                  <td><%= nem.location %></td>
+                </tr>
+              </tbody>
+            <% }); %>
+        </table>
+      </div>
